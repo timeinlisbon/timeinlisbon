@@ -6,13 +6,5 @@ README.md
 replit.md
 .replit
 migrations
-client/src
 server
-shared
-components.json
-drizzle.config.ts
-postcss.config.js
-tailwind.config.ts
-tsconfig.json
-vite.config.ts
-package-lock.json
+dist/index.js

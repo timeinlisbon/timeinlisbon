@@ -110,9 +110,14 @@ Two main entities:
 - Static file serving capability
 
 ### Vercel Deployment Configuration
-- **Build Command**: `npm run build` (builds frontend with Vite and backend with ESBuild)
-- **Output Directory**: `dist/public` (contains static frontend assets)
-- **Functions**: `dist/index.js` (Node.js 20.x serverless function for API and SSR)
-- **Routes Configuration**: Static files served from `dist/public`, all API routes and fallbacks handled by `dist/index.js`
+- **Architecture**: Static frontend with Vercel Serverless Functions for API
+- **Build Command**: `npm run build` (builds only frontend with Vite)
+- **Output Directory**: `dist/public` (static frontend assets served automatically)
+- **API Routes**: 
+  - `/api/subscribe.js` - Newsletter subscription endpoint
+  - `/api/contact.js` - Contact form submission endpoint
 - **Environment Variables**: Requires `DATABASE_URL` for PostgreSQL connection
-- **Build Process**: Frontend assets compiled to `dist/public/`, backend compiled to `dist/index.js`
+- **Database Access**: Direct connection from serverless functions using Drizzle ORM and Neon
+- **Schema**: Simplified JavaScript schema in `shared/schema.js` for Vercel compatibility
+- **CORS**: Configured in API functions for cross-origin requests
+- **No Complex Routing**: Vercel handles static files and API routes automatically
