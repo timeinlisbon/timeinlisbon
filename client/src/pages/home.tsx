@@ -4,7 +4,7 @@ import { Navigation } from "@/components/navigation";
 import { Logo } from "@/components/logo";
 import { SubscriptionForm } from "@/components/subscription-form";
 import { SocialMedia } from "@/components/social-media";
-import { useLanguage } from "@/hooks/use-language";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { MessageCircle, BookOpen, FileText } from "lucide-react";
 
 export default function Home() {

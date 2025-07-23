@@ -2,7 +2,7 @@ import { Link } from "wouter";
 import { Navigation } from "@/components/navigation";
 import { ContactForm } from "@/components/contact-form";
 import { SocialMedia } from "@/components/social-media";
-import { useLanguage } from "@/hooks/use-language";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Contact() {
   const { t } = useLanguage();

@@ -1,5 +1,5 @@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { useLanguage, type Language } from "@/hooks/use-language";
+import { useLanguage, type Language } from "@/contexts/LanguageContext";
 
 const languages = [
   { value: "en", label: "🇬🇧 English" },
