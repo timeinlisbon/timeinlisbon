@@ -1,0 +1,60 @@
+Create a complete, fully functional landing page website for "Times in Lisbon" - a newsletter-focused brand targeting email subscriptions for weekly content featuring interviews, restaurant recommendations, and sponsored content.
+
+TECHNICAL REQUIREMENTS:
+
+Generate complete HTML, CSS (tailwindcss), and JavaScript code (react)
+Mobile-first responsive design
+No images or photos - text and icons only
+Lightweight, fast-loading code
+SEO optimized with proper meta tags
+Accessibility compliant (ARIA labels, semantic HTML)
+Cross-browser compatible
+VISUAL DESIGN SPECIFICATIONS:
+
+White background throughout
+Black, modern, highly legible typography (use web-safe fonts)
+Clean, youthful, accessible layout with generous white space
+Conversion-focused UI with clear visual hierarchy
+Smooth scroll animations and micro-interactions
+PAGE STRUCTURE & FUNCTIONALITY:
+
+Homepage Layout (in exact order):
+
+Sticky Navigation Bar (always visible at top):
+
+Left: "Subscribe" button linking to hero form
+Right: Language selector dropdown (Portuguese, English, French)
+Hero Section (first visible content):
+
+Centered "Times in Lisbon" logo/title with friendly, urban styling
+Compelling headline about the weekly newsletter
+Subscription form with fields: Name (optional), Email (required), Phone (optional)
+Prominent "Subscribe" call-to-action button
+Brief value proposition text
+Social Media Section:
+
+Clickable icon links for: Facebook, Instagram, TikTok, YouTube, Email
+Icons should be styled consistently with the brand
+Contact Page:
+
+Simple contact form: Name, Email, Message fields
+"Send" button with JavaScript success message
+Social media icons repeated at bottom
+Same navigation and styling as homepage
+FUNCTIONALITY REQUIREMENTS:
+
+Multilingual support with dynamic content switching
+Form validation for email fields
+Smooth scrolling between sections
+Responsive breakpoints for mobile, tablet, desktop
+Loading animations and hover effects
+Local storage for language preference
+DELIVERABLES:
+Provide complete, production-ready code including:
+
+index.html (homepage)
+contact.html (contact page)
+styles.css (all styling)
+script.js (all functionality)
+Clear code comments explaining key sections
+Ensure the code is clean, well-structured, and ready for immediate deployment.
