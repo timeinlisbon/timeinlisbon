@@ -54,17 +54,12 @@ export default function Home() {
             </div>
             
             {/* Subheadline */}
-            <p className="text-lg sm:text-xl md:text-2xl text-gray-600 mb-8 animate-slide-up max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-600 mb-12 animate-slide-up max-w-2xl mx-auto leading-relaxed">
               {t("hero-subtitle")}
             </p>
             
-            {/* Subscription Form */}
-            <div ref={subscriptionRef} className="mb-12">
-              <SubscriptionForm />
-            </div>
-            
             {/* Social Media Cards */}
-            <div className="mb-12">
+            <div ref={subscriptionRef} className="mb-12">
               <h2 className="text-2xl font-bold mb-8 text-gray-900 text-center">
                 {t("follow-us")}
               </h2>

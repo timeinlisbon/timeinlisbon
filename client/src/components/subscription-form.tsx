@@ -68,7 +68,7 @@ export function SubscriptionForm() {
 
   if (isSuccess) {
     return (
-      <div className="max-w-md mx-auto bg-gray-50 p-8 rounded-2xl shadow-lg">
+      <div className="max-w-md mx-auto">
         <div className="text-center">
           <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
           <h3 className="text-xl font-semibold text-gray-900 mb-2">
@@ -83,7 +83,7 @@ export function SubscriptionForm() {
   }
 
   return (
-    <div className="max-w-md mx-auto bg-gray-50 p-8 rounded-2xl shadow-lg">
+    <div className="max-w-md mx-auto">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           <FormField
