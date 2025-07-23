@@ -9,6 +9,13 @@ export function useLanguage() {
     return (localStorage.getItem("timesInLisbonLanguage") as Language) || "en";
   });
 
+  const changeLanguage = (newLanguage: Language) => {
+    setLanguage(newLanguage);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("timesInLisbonLanguage", newLanguage);
+    }
+  };
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       localStorage.setItem("timesInLisbonLanguage", language);
@@ -21,7 +28,7 @@ export function useLanguage() {
 
   return {
     language,
-    setLanguage,
+    setLanguage: changeLanguage,
     t,
   };
 }

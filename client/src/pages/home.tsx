@@ -72,23 +72,6 @@ export default function Home() {
               </h2>
               <SocialMedia variant="cards" />
             </div>
-            
-            {/* Value Proposition */}
-            <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-              {features.map(({ icon: Icon, title, description }, index) => (
-                <div key={index} className="text-center animate-fade-in">
-                  <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Icon className="w-6 h-6 text-white" />
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2 text-gray-900">
-                    {title}
-                  </h3>
-                  <p className="text-gray-600">
-                    {description}
-                  </p>
-                </div>
-              ))}
-            </div>
           </div>
         </section>
       </main>
