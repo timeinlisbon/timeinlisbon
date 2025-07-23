@@ -1,0 +1,58 @@
+[14:30:59.738] Running build in Washington, D.C., USA (East) – iad1
+[14:30:59.739] Build machine configuration: 2 cores, 8 GB
+[14:30:59.768] Cloning github.com/timeinlisbon/timeinlisbon (Branch: main, Commit: d30fd74)
+[14:30:59.885] Previous build caches not available
+[14:31:00.028] Cloning completed: 259.000ms
+[14:31:00.060] Found .vercelignore
+[14:31:00.067] Removed 32 ignored files defined in .vercelignore
+[14:31:00.067]   /.git/config
+[14:31:00.067]   /.git/description
+[14:31:00.067]   /.git/FETCH_HEAD
+[14:31:00.067]   /.git/HEAD
+[14:31:00.068]   /.git/hooks/applypatch-msg.sample
+[14:31:00.068]   /.git/hooks/commit-msg.sample
+[14:31:00.068]   /.git/hooks/fsmonitor-watchman.sample
+[14:31:00.068]   /.git/hooks/post-update.sample
+[14:31:00.068]   /.git/hooks/pre-applypatch.sample
+[14:31:00.068]   /.git/hooks/pre-commit.sample
+[14:31:01.907] Running "vercel build"
+[14:31:02.375] Vercel CLI 44.5.0
+[14:31:03.148] Running "install" command: `npm install`...
+[14:31:07.430] npm warn deprecated @esbuild-kit/esm-loader@2.6.5: Merged into tsx: https://tsx.is
+[14:31:07.455] npm warn deprecated @esbuild-kit/core-utils@3.3.2: Merged into tsx: https://tsx.is
+[14:31:12.769] 
+[14:31:12.770] added 481 packages, and audited 482 packages in 9s
+[14:31:12.770] 
+[14:31:12.770] 64 packages are looking for funding
+[14:31:12.771]   run `npm fund` for details
+[14:31:12.801] 
+[14:31:12.802] 11 vulnerabilities (3 low, 8 moderate)
+[14:31:12.802] 
+[14:31:12.802] To address issues that do not require attention, run:
+[14:31:12.802]   npm audit fix
+[14:31:12.802] 
+[14:31:12.803] To address all issues (including breaking changes), run:
+[14:31:12.803]   npm audit fix --force
+[14:31:12.803] 
+[14:31:12.803] Run `npm audit` for details.
+[14:31:13.272] 
+[14:31:13.272] > rest-express@1.0.0 build
+[14:31:13.272] > vite build --outDir dist/public
+[14:31:13.273] 
+[14:31:13.540] [36mvite v5.4.19 [32mbuilding for production...[36m[39m
+[14:31:13.590] transforming...
+[14:31:13.839] Browserslist: browsers data (caniuse-lite) is 9 months old. Please run:
+[14:31:13.840]   npx update-browserslist-db@latest
+[14:31:13.840]   Why you should do it regularly: https://github.com/browserslist/update-db#readme
+[14:31:17.923] [32m✓[39m 1726 modules transformed.
+[14:31:18.255] rendering chunks...
+[14:31:18.264] computing gzip size...
+[14:31:18.281] [2mdist/public/[22m[32mindex.html                                [39m[1m[2m  2.67 kB[22m[1m[22m[2m │ gzip:   1.00 kB[22m
+[14:31:18.281] [2mdist/public/[22m[2massets/[22m[32mtimes-in-lisbon-logo-qBpXD1U3.png  [39m[1m[2m199.24 kB[22m[1m[22m
+[14:31:18.282] [2mdist/public/[22m[2massets/[22m[35mindex-MFoDIhy4.css                 [39m[1m[2m 59.83 kB[22m[1m[22m[2m │ gzip:  10.63 kB[22m
+[14:31:18.282] [2mdist/public/[22m[2massets/[22m[36mindex-C-cT_qoN.js                  [39m[1m[2m411.71 kB[22m[1m[22m[2m │ gzip: 128.93 kB[22m
+[14:31:18.282] [32m✓ built in 4.72s[39m
+[14:31:18.319] Error: No Output Directory named "public" found after the Build completed. You can configure the Output Directory in your Project Settings.
+[14:31:18.319] Learn More: https://vercel.link/missing-public-directory
+[14:31:18.592] 
+[14:31:21.091] Exiting build container
