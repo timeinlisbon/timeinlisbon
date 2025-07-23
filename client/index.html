@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <title>Times in Lisbon - Weekly Newsletter</title>
+    <meta name="description" content="Subscribe to Times in Lisbon - Your weekly guide to interviews, restaurant recommendations, and curated content from Portugal's vibrant capital.">
+    <meta name="keywords" content="Lisbon, newsletter, Portugal, restaurants, interviews, weekly content">
+    <meta name="author" content="Times in Lisbon">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Times in Lisbon - Weekly Newsletter">
+    <meta property="og:description" content="Your weekly guide to Lisbon's best interviews, restaurants, and curated content.">
+    <meta property="og:type" content="website">
+    
+    <!-- Preconnect to improve performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <style>
+      /* Animation keyframes */
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      
+      @keyframes slideUp {
+        from { opacity: 0; transform: translateY(40px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      
+      @keyframes bounceGentle {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+      }
+      
+      .animate-fade-in {
+        animation: fadeIn 0.6s ease-in-out;
+      }
+      
+      .animate-slide-up {
+        animation: slideUp 0.8s ease-out;
+      }
+      
+      .animate-bounce-gentle {
+        animation: bounceGentle 2s ease-in-out infinite;
+      }
+      
+      /* Logo responsive styling */
+      .logo-container {
+        max-width: 280px;
+        width: 100%;
+        height: auto;
+      }
+      
+      @media (min-width: 640px) {
+        .logo-container {
+          max-width: 360px;
+        }
+      }
+      
+      @media (min-width: 768px) {
+        .logo-container {
+          max-width: 440px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <!-- This is a replit script which adds a banner on the top of the page when opened in development mode outside the replit environment -->
+    <script type="text/javascript" src="https://replit.com/public/js/replit-dev-banner.js"></script>
+  </body>
+</html>
