@@ -13,28 +13,24 @@ const socialLinks = [
     icon: Facebook,
     label: "Follow us on Facebook",
     name: "Facebook",
-    color: "hover:bg-blue-600",
   },
   {
     href: "https://instagram.com/timesinlisbon",
     icon: Instagram,
     label: "Follow us on Instagram", 
     name: "Instagram",
-    color: "hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500",
   },
   {
     href: "https://tiktok.com/@timesinlisbon",
     icon: TikTokIcon,
     label: "Follow us on TikTok",
     name: "TikTok",
-    color: "hover:bg-black",
   },
   {
     href: "https://youtube.com/@timesinlisbon",
     icon: Youtube,
     label: "Subscribe to our YouTube channel",
     name: "YouTube",
-    color: "hover:bg-red-600",
   },
 ];
 
@@ -45,22 +41,20 @@ interface SocialMediaProps {
 export function SocialMedia({ variant = "icons" }: SocialMediaProps) {
   if (variant === "cards") {
     return (
-      <div className="bg-gradient-to-r from-gray-50 to-gray-100 p-8 rounded-2xl shadow-lg">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
-          {socialLinks.map(({ href, icon: Icon, label, name, color }) => (
-            <a
-              key={href}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`bg-white ${color} p-6 rounded-xl text-gray-800 hover:text-white text-center transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-xl border border-gray-200 hover:border-transparent group`}
-              aria-label={label}
-            >
-              <Icon className="w-10 h-10 mx-auto mb-3 transition-transform duration-300 group-hover:scale-110" />
-              <p className="font-semibold text-sm">{name}</p>
-            </a>
-          ))}
-        </div>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
+        {socialLinks.map(({ href, icon: Icon, label, name }) => (
+          <a
+            key={href}
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-white hover:bg-black p-6 rounded-xl text-gray-800 hover:text-white text-center transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-xl border border-gray-200 hover:border-black group"
+            aria-label={label}
+          >
+            <Icon className="w-10 h-10 mx-auto mb-3 transition-transform duration-300 group-hover:scale-110" />
+            <p className="font-semibold text-sm">{name}</p>
+          </a>
+        ))}
       </div>
     );
   }
@@ -68,13 +62,13 @@ export function SocialMedia({ variant = "icons" }: SocialMediaProps) {
   // Default icons variant
   return (
     <div className="flex justify-center space-x-6">
-      {socialLinks.map(({ href, icon: Icon, label, color }) => (
+      {socialLinks.map(({ href, icon: Icon, label }) => (
         <a
           key={href}
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className={`w-14 h-14 bg-gray-800 ${color} rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110 shadow-lg hover:shadow-xl group`}
+          className="w-14 h-14 bg-gray-800 hover:bg-black rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110 shadow-lg hover:shadow-xl group"
           aria-label={label}
         >
           <Icon className="w-7 h-7 text-white transition-transform duration-300 group-hover:scale-110" />
