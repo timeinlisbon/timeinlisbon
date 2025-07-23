@@ -37,7 +37,7 @@ The application follows a monorepo structure with clear separation between clien
 
 ### Backend Architecture
 - **API Routes**: RESTful endpoints for newsletter subscription and contact form submission
-- **Data Storage**: Dual storage implementation (in-memory for development, database for production)
+- **Data Storage**: PostgreSQL database with Drizzle ORM for persistent data storage
 - **Validation**: Zod schema validation for all input data
 - **Error Handling**: Centralized error handling with proper HTTP status codes
 

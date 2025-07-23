@@ -1,4 +1,6 @@
 import { subscribers, contacts, type Subscriber, type Contact, type InsertSubscriber, type InsertContact } from "@shared/schema";
+import { db } from "./db";
+import { eq } from "drizzle-orm";
 
 export interface IStorage {
   getSubscriber(id: number): Promise<Subscriber | undefined>;
@@ -8,58 +10,37 @@ export interface IStorage {
   createContact(contact: InsertContact): Promise<Contact>;
 }
 
-export class MemStorage implements IStorage {
-  private subscribers: Map<number, Subscriber>;
-  private contacts: Map<number, Contact>;
-  private currentSubscriberId: number;
-  private currentContactId: number;
-
-  constructor() {
-    this.subscribers = new Map();
-    this.contacts = new Map();
-    this.currentSubscriberId = 1;
-    this.currentContactId = 1;
-  }
-
+export class DatabaseStorage implements IStorage {
   async getSubscriber(id: number): Promise<Subscriber | undefined> {
-    return this.subscribers.get(id);
+    const [subscriber] = await db.select().from(subscribers).where(eq(subscribers.id, id));
+    return subscriber || undefined;
   }
 
   async getSubscriberByEmail(email: string): Promise<Subscriber | undefined> {
-    return Array.from(this.subscribers.values()).find(
-      (subscriber) => subscriber.email === email,
-    );
+    const [subscriber] = await db.select().from(subscribers).where(eq(subscribers.email, email));
+    return subscriber || undefined;
   }
 
   async createSubscriber(insertSubscriber: InsertSubscriber): Promise<Subscriber> {
-    const id = this.currentSubscriberId++;
-    const subscriber: Subscriber = { 
-      ...insertSubscriber,
-      name: insertSubscriber.name || null,
-      phone: insertSubscriber.phone || null,
-      language: insertSubscriber.language || "en",
-      id,
-      createdAt: new Date()
-    };
-    this.subscribers.set(id, subscriber);
+    const [subscriber] = await db
+      .insert(subscribers)
+      .values(insertSubscriber)
+      .returning();
     return subscriber;
   }
 
   async getContact(id: number): Promise<Contact | undefined> {
-    return this.contacts.get(id);
+    const [contact] = await db.select().from(contacts).where(eq(contacts.id, id));
+    return contact || undefined;
   }
 
   async createContact(insertContact: InsertContact): Promise<Contact> {
-    const id = this.currentContactId++;
-    const contact: Contact = { 
-      ...insertContact,
-      language: insertContact.language || "en",
-      id,
-      createdAt: new Date()
-    };
-    this.contacts.set(id, contact);
+    const [contact] = await db
+      .insert(contacts)
+      .values(insertContact)
+      .returning();
     return contact;
   }
 }
 
-export const storage = new MemStorage();
+export const storage = new DatabaseStorage();
