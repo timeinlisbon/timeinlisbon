@@ -13,8 +13,8 @@ import { apiRequest } from "@/lib/queryClient";
 import { CheckCircle } from "lucide-react";
 
 const contactSchema = z.object({
-  name: z.string().min(1, "Name is required"),
   email: z.string().email("Please enter a valid email address"),
+  name: z.string().min(1, "Name is required"),
   message: z.string().min(10, "Message must be at least 10 characters long"),
 });
 
@@ -28,8 +28,8 @@ export function ContactForm() {
   const form = useForm<ContactForm>({
     resolver: zodResolver(contactSchema),
     defaultValues: {
-      name: "",
       email: "",
+      name: "",
       message: "",
     },
   });
@@ -87,14 +87,15 @@ export function ContactForm() {
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <FormField
             control={form.control}
-            name="name"
+            name="email"
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="block text-sm font-medium text-gray-700 mb-2">
-                  {t("contact-name")}
+                  {t("contact-email")}
                 </FormLabel>
                 <FormControl>
                   <Input
+                    type="email"
                     {...field}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200"
                   />
@@ -106,15 +107,14 @@ export function ContactForm() {
 
           <FormField
             control={form.control}
-            name="email"
+            name="name"
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="block text-sm font-medium text-gray-700 mb-2">
-                  {t("contact-email")}
+                  {t("contact-name")}
                 </FormLabel>
                 <FormControl>
                   <Input
-                    type="email"
                     {...field}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200"
                   />

@@ -1,29 +1,34 @@
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useLanguage, type Language } from "@/contexts/LanguageContext";
+import { Button } from "@/components/ui/button";
 
 const languages = [
-  { value: "en", label: "🇬🇧 English" },
-  { value: "pt", label: "🇵🇹 Português" },
-  { value: "fr", label: "🇫🇷 Français" },
+  { value: "en", flag: "🇬🇧", label: "English" },
+  { value: "pt", flag: "🇵🇹", label: "Português" },
+  { value: "fr", flag: "🇫🇷", label: "Français" },
 ] as const;
 
 export function LanguageSelector() {
   const { language, setLanguage } = useLanguage();
 
-  const currentLanguage = languages.find(lang => lang.value === language);
-
   return (
-    <Select value={language} onValueChange={(value: Language) => setLanguage(value)}>
-      <SelectTrigger className="w-[160px] bg-transparent border-gray-300 focus:ring-2 focus:ring-gray-500">
-        <SelectValue placeholder={currentLanguage?.label || "🇬🇧 English"} />
-      </SelectTrigger>
-      <SelectContent>
-        {languages.map(({ value, label }) => (
-          <SelectItem key={value} value={value}>
-            {label}
-          </SelectItem>
-        ))}
-      </SelectContent>
-    </Select>
+    <div className="flex items-center space-x-2">
+      {languages.map(({ value, flag, label }) => (
+        <Button
+          key={value}
+          variant="ghost"
+          size="sm"
+          onClick={() => setLanguage(value)}
+          className={`p-2 h-auto rounded-full hover:bg-gray-100 transition-all duration-200 ${
+            language === value 
+              ? 'ring-2 ring-gray-400 bg-gray-50' 
+              : 'opacity-70 hover:opacity-100'
+          }`}
+          title={label}
+          aria-label={`Switch to ${label}`}
+        >
+          <span className="text-lg">{flag}</span>
+        </Button>
+      ))}
+    </div>
   );
 }

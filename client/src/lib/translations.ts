@@ -28,7 +28,10 @@ export const translations = {
     'email-error': 'Please enter a valid email address.',
     'email-exists': 'This email address is already subscribed.',
     'subscription-error': 'Something went wrong. Please try again.',
-    'contact-error': 'Failed to send message. Please try again.'
+    'contact-error': 'Failed to send message. Please try again.',
+    'subscribe-title': 'Subscribe to Times in Lisbon',
+    'subscribe-subtitle': 'Join our community and get weekly insights delivered to your inbox.',
+    'optional': 'optional'
   },
   pt: {
     'subscribe': 'Subscrever',
@@ -59,7 +62,10 @@ export const translations = {
     'email-error': 'Por favor, insira um endereço de email válido.',
     'email-exists': 'Este endereço de email já está subscrito.',
     'subscription-error': 'Algo correu mal. Tente novamente.',
-    'contact-error': 'Falha ao enviar mensagem. Tente novamente.'
+    'contact-error': 'Falha ao enviar mensagem. Tente novamente.',
+    'subscribe-title': 'Subscrever ao Times in Lisbon',
+    'subscribe-subtitle': 'Junte-se à nossa comunidade e receba insights semanais na sua caixa de entrada.',
+    'optional': 'opcional'
   },
   fr: {
     'subscribe': 'S\'abonner',
@@ -90,7 +96,10 @@ export const translations = {
     'email-error': 'Veuillez saisir une adresse email valide.',
     'email-exists': 'Cette adresse email est déjà abonnée.',
     'subscription-error': 'Quelque chose a mal tourné. Veuillez réessayer.',
-    'contact-error': 'Échec de l\'envoi du message. Veuillez réessayer.'
+    'contact-error': 'Échec de l\'envoi du message. Veuillez réessayer.',
+    'subscribe-title': 'S\'abonner à Times in Lisbon',
+    'subscribe-subtitle': 'Rejoignez notre communauté et recevez des insights hebdomadaires dans votre boîte mail.',
+    'optional': 'optionnel'
   }
 } as const;
 

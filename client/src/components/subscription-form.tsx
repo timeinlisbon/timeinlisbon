@@ -12,9 +12,8 @@ import { apiRequest } from "@/lib/queryClient";
 import { CheckCircle } from "lucide-react";
 
 const subscriptionSchema = z.object({
-  name: z.string().optional(),
   email: z.string().email("Please enter a valid email address"),
-  phone: z.string().optional(),
+  name: z.string().optional(),
 });
 
 type SubscriptionForm = z.infer<typeof subscriptionSchema>;
@@ -27,9 +26,8 @@ export function SubscriptionForm() {
   const form = useForm<SubscriptionForm>({
     resolver: zodResolver(subscriptionSchema),
     defaultValues: {
-      name: "",
       email: "",
-      phone: "",
+      name: "",
     },
   });
 
@@ -90,24 +88,6 @@ export function SubscriptionForm() {
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           <FormField
             control={form.control}
-            name="name"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="sr-only">{t("name-placeholder")}</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder={t("name-placeholder")}
-                    {...field}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200"
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
             name="email"
             render={({ field }) => (
               <FormItem>
@@ -118,6 +98,7 @@ export function SubscriptionForm() {
                     placeholder={t("email-placeholder")}
                     {...field}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200"
+                    required
                   />
                 </FormControl>
                 <FormMessage />
@@ -127,14 +108,13 @@ export function SubscriptionForm() {
 
           <FormField
             control={form.control}
-            name="phone"
+            name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="sr-only">{t("phone-placeholder")}</FormLabel>
+                <FormLabel className="sr-only">{t("name-placeholder")}</FormLabel>
                 <FormControl>
                   <Input
-                    type="tel"
-                    placeholder={t("phone-placeholder")}
+                    placeholder={`${t("name-placeholder")} (${t("optional")})`}
                     {...field}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200"
                   />

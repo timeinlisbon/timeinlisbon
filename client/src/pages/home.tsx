@@ -45,15 +45,13 @@ export default function Home() {
         <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             
-            {/* Logo */}
-            <div className="mb-8 animate-fade-in flex justify-center">
-              <Logo className="animate-fade-in" />
+            {/* Logo and Title - positioned close together */}
+            <div className="mb-8 animate-fade-in flex flex-col items-center">
+              <Logo className="animate-fade-in mb-4" />
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold animate-slide-up leading-tight text-gray-900 text-center">
+                {t("hero-title")}
+              </h1>
             </div>
-            
-            {/* Headline */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-slide-up leading-tight text-gray-900">
-              {t("hero-title")}
-            </h1>
             
             {/* Subheadline */}
             <p className="text-lg sm:text-xl md:text-2xl text-gray-600 mb-8 animate-slide-up max-w-2xl mx-auto leading-relaxed">

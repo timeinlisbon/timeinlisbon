@@ -24,6 +24,9 @@ export function Navigation({ onSubscribeClick }: NavigationProps) {
                 >
                   {t("subscribe")}
                 </Button>
+                <Link href="/subscribe" className="text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200">
+                  {t("subscribe")}
+                </Link>
                 <Link href="/contact" className="text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200">
                   {t("contact")}
                 </Link>
