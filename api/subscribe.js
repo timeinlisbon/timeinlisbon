@@ -1,16 +1,7 @@
-import { Pool, neonConfig } from '@neondatabase/serverless';
-import { drizzle } from 'drizzle-orm/neon-serverless';
-import ws from "ws";
-import { subscribers } from '../shared/schema.js';
-import { eq } from 'drizzle-orm';
-
-neonConfig.webSocketConstructor = ws;
-
-const pool = new Pool({ connectionString: process.env.DATABASE_URL });
-const db = drizzle({ client: pool });
+import { neon } from '@neondatabase/serverless';
 
 export default async function handler(req, res) {
-  // Set CORS headers
+  // Enable CORS
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
@@ -22,35 +13,31 @@ export default async function handler(req, res) {
   }
 
   if (req.method !== 'POST') {
-    return res.status(405).json({ message: 'Method not allowed' });
+    return res.status(405).json({ error: 'Method not allowed' });
   }
 
   try {
-    const { email, name, phone, language = 'en' } = req.body;
+    const { email, name, language } = req.body;
 
     if (!email) {
-      return res.status(400).json({ message: 'Email is required' });
+      return res.status(400).json({ error: 'Email is required' });
     }
 
-    // Check if email already exists
-    const existing = await db.select().from(subscribers).where(eq(subscribers.email, email));
-    
-    if (existing.length > 0) {
-      return res.status(400).json({ message: 'Email already subscribed' });
+    if (!process.env.DATABASE_URL) {
+      return res.status(500).json({ error: 'Database not configured' });
     }
 
-    // Create new subscriber
-    const [subscriber] = await db
-      .insert(subscribers)
-      .values({ email, name, phone, language })
-      .returning();
+    const sql = neon(process.env.DATABASE_URL);
 
-    res.status(201).json({ 
-      message: 'Successfully subscribed!',
-      subscriber: { id: subscriber.id, email: subscriber.email }
-    });
+    await sql`
+      INSERT INTO subscribers (email, name, language, subscribed_at)
+      VALUES (${email}, ${name || ''}, ${language || 'pt'}, ${new Date().toISOString()})
+      ON CONFLICT (email) DO NOTHING
+    `;
+
+    res.status(200).json({ success: true });
   } catch (error) {
     console.error('Subscription error:', error);
-    res.status(500).json({ message: 'Internal server error' });
+    res.status(500).json({ error: 'Internal server error' });
   }
 }

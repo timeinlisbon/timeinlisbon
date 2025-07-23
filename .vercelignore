@@ -8,3 +8,12 @@ replit.md
 migrations
 server
 dist/index.js
+node_modules
+.env
+.env.local
+.env.*.local
+server
+*.log
+.replit
+.git
+attached_assets

@@ -1,15 +1,8 @@
-import { Pool, neonConfig } from '@neondatabase/serverless';
-import { drizzle } from 'drizzle-orm/neon-serverless';
-import ws from "ws";
-import { contacts } from '../shared/schema.js';
 
-neonConfig.webSocketConstructor = ws;
-
-const pool = new Pool({ connectionString: process.env.DATABASE_URL });
-const db = drizzle({ client: pool });
+import { neon } from '@neondatabase/serverless';
 
 export default async function handler(req, res) {
-  // Set CORS headers
+  // Enable CORS
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
@@ -21,28 +14,30 @@ export default async function handler(req, res) {
   }
 
   if (req.method !== 'POST') {
-    return res.status(405).json({ message: 'Method not allowed' });
+    return res.status(405).json({ error: 'Method not allowed' });
   }
 
   try {
-    const { name, email, message, language = 'en' } = req.body;
+    const { name, email, message, language } = req.body;
 
     if (!name || !email || !message) {
-      return res.status(400).json({ message: 'Name, email, and message are required' });
+      return res.status(400).json({ error: 'Missing required fields' });
     }
 
-    // Create new contact
-    const [contact] = await db
-      .insert(contacts)
-      .values({ name, email, message, language })
-      .returning();
+    if (!process.env.DATABASE_URL) {
+      return res.status(500).json({ error: 'Database not configured' });
+    }
 
-    res.status(201).json({ 
-      message: 'Message sent successfully!',
-      contact: { id: contact.id }
-    });
+    const sql = neon(process.env.DATABASE_URL);
+    
+    await sql`
+      INSERT INTO contacts (name, email, message, language, created_at)
+      VALUES (${name}, ${email}, ${message}, ${language || 'pt'}, ${new Date().toISOString()})
+    `;
+
+    res.status(200).json({ success: true });
   } catch (error) {
-    console.error('Contact error:', error);
-    res.status(500).json({ message: 'Internal server error' });
+    console.error('Contact submission error:', error);
+    res.status(500).json({ error: 'Internal server error' });
   }
 }
