@@ -1,0 +1,98 @@
+Para resolver o erro "Error: No Output Directory named 'dist' found after the Build completed" durante o deploy no Vercel, siga estes passos:
+
+✅ 1. Confirme onde seu build está sendo gerado
+Para projetos com Vite ou React-Vite, o diretório padrão após npm run build é geralmente dist/.
+
+Para React Create React App, geralmente é build/, não dist/.
+
+Execute localmente:
+
+bash
+Copiar
+Editar
+npm run build
+# ou yarn build
+Veja qual pasta aparece — pode ser dist, build, public, etc.
+
+⚙️ 2. Configure o Build Command e Output Directory no Vercel
+No painel Vercel:
+
+Vá ao seu projeto → Settings → General → Build & Output Settings.
+
+Ajuste:
+
+Build Command: por exemplo, npm run build (ou yarn build, vite build, npx expo export --platform web, dependendo do seu setup).
+
+Output Directory: informe exatamente o nome da pasta gerada (ex: dist, build, public, .vercel/output/static, etc.).
+Válidos conforme sua build local. 
+Reddit
++15
+Stack Overflow
++15
+GitHub
++15
+Reddit
+Stack Overflow
+Reddit
+Reddit
++3
+GitHub
++3
+Reddit
++3
+
+🔧 3. Alternativa: ajustar via vercel.json
+Você também pode definir dentro do repositório, criando ou editando um arquivo vercel.json na raiz:
+
+json
+Copiar
+Editar
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist"
+}
+ou adapte para sua situação (ex: build em vez de dist). 
+Reddit
+
+🧩 4. Cenários comuns
+React com Vite: npm run build → cria dist/.
+Configure como acima.
+
+React Create React App: npm run build → cria build/.
+Configure Output Directory: build.
+
+Expo Web: use npx expo export --platform web → resulta em dist/. 
+Reddit
+
+🛠️ 5. Verifique seu package.json
+Confirme se há um script build. Exemplo:
+
+json
+Copiar
+Editar
+"scripts": {
+  "build": "vite build"
+}
+Sem isso, o Vercel pode não criar nada e falhar ao encontrar a pasta de saída.
+
+📌 Resumo
+Etapa	O que fazer
+Build local	Execute build e verifique qual pasta é gerada (dist/build)
+Vercel Settings	Ajuste Build Command e Output Directory para coincidirem com sua pasta
+Ou vercel.json	Defina "buildCommand" e "outputDirectory" de forma equivalente
+
+🎯 Exemplo prático (Vite)
+Se seu projeto usa Vite e gera dist/:
+
+json
+Copiar
+Editar
+// vercel.json
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist"
+}
+No painel Vercel, garanta a mesma configuração.
+
+Após ajustar, redeploy no Vercel. Isso deve corrigir o erro. Se aparecer outro diretório (como build ou .vercel/output/static), basta substituir conforme necessário.
+
