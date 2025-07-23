@@ -2,18 +2,20 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useLanguage, type Language } from "@/hooks/use-language";
 
 const languages = [
-  { value: "en", label: "English" },
-  { value: "pt", label: "Português" },
-  { value: "fr", label: "Français" },
+  { value: "en", label: "🇬🇧 English" },
+  { value: "pt", label: "🇵🇹 Português" },
+  { value: "fr", label: "🇫🇷 Français" },
 ] as const;
 
 export function LanguageSelector() {
   const { language, setLanguage } = useLanguage();
 
+  const currentLanguage = languages.find(lang => lang.value === language);
+
   return (
     <Select value={language} onValueChange={(value: Language) => setLanguage(value)}>
-      <SelectTrigger className="w-[140px] bg-transparent border-gray-300 focus:ring-2 focus:ring-gray-500">
-        <SelectValue />
+      <SelectTrigger className="w-[160px] bg-transparent border-gray-300 focus:ring-2 focus:ring-gray-500">
+        <SelectValue placeholder={currentLanguage?.label || "🇬🇧 English"} />
       </SelectTrigger>
       <SelectContent>
         {languages.map(({ value, label }) => (

@@ -34,28 +34,11 @@ export default function Contact() {
               <h3 className="text-lg font-semibold mb-6 text-gray-900">
                 {t("follow-us")}
               </h3>
-              <SocialMedia size="sm" />
+              <SocialMedia variant="icons" />
             </div>
           </div>
         </section>
       </main>
-      
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-8">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="mb-4">
-            {t("footer-text")}
-          </p>
-          <div className="flex justify-center space-x-6 text-sm">
-            <Link href="/" className="hover:text-gray-300 transition-colors duration-200">
-              {t("home")}
-            </Link>
-            <Link href="/contact" className="hover:text-gray-300 transition-colors duration-200">
-              {t("contact")}
-            </Link>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

@@ -65,6 +65,14 @@ export default function Home() {
               <SubscriptionForm />
             </div>
             
+            {/* Social Media Cards */}
+            <div className="mb-12">
+              <h2 className="text-2xl font-bold mb-8 text-gray-900 text-center">
+                {t("follow-us")}
+              </h2>
+              <SocialMedia variant="cards" />
+            </div>
+            
             {/* Value Proposition */}
             <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
               {features.map(({ icon: Icon, title, description }, index) => (
@@ -83,34 +91,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        
-        {/* Social Media Section */}
-        <section className="py-16 bg-gray-50">
-          <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl font-bold mb-8 text-gray-900">
-              {t("follow-us")}
-            </h2>
-            <SocialMedia size="lg" />
-          </div>
-        </section>
       </main>
-      
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-8">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="mb-4">
-            {t("footer-text")}
-          </p>
-          <div className="flex justify-center space-x-6 text-sm">
-            <Link href="/" className="hover:text-gray-300 transition-colors duration-200">
-              {t("home")}
-            </Link>
-            <Link href="/contact" className="hover:text-gray-300 transition-colors duration-200">
-              {t("contact")}
-            </Link>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }
