@@ -15,19 +15,19 @@ export default function Subscribe() {
       <Navigation onSubscribeClick={scrollToTop} />
       
       <main>
-        <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-xl mx-auto">
-            <div className="text-center mb-12">
-              <h1 className="text-4xl sm:text-5xl font-bold mb-6 text-gray-900 leading-tight">
+        <section className="pt-20 pb-16 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-16">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 text-gray-900 leading-tight">
                 {t("subscribe-title")}
               </h1>
-              <p className="text-xl text-gray-600 leading-relaxed">
+              <p className="text-xl sm:text-2xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
                 {t("subscribe-subtitle")}
               </p>
             </div>
             
             {/* Highlighted Subscription Form */}
-            <div className="bg-white rounded-3xl p-10 shadow-2xl border border-gray-100 transform hover:scale-[1.02] transition-all duration-300">
+            <div className="bg-white rounded-3xl p-12 sm:p-16 shadow-2xl border border-gray-100 transform hover:scale-[1.01] transition-all duration-300 max-w-2xl mx-auto">
               <SubscriptionForm />
             </div>
           </div>

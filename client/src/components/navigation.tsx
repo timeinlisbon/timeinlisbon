@@ -18,12 +18,9 @@ export function Navigation({ onSubscribeClick }: NavigationProps) {
           <div className="flex items-center space-x-4">
             {location === "/" ? (
               <>
-                <Button
-                  onClick={onSubscribeClick}
-                  className="bg-black text-white px-6 py-2 rounded-full font-medium hover:bg-gray-800 transition-colors duration-200"
-                >
-                  {t("subscribe")}
-                </Button>
+                <Link href="/" className="bg-black text-white px-6 py-2 rounded-full font-medium hover:bg-gray-800 transition-colors duration-200">
+                  {t("home")}
+                </Link>
                 <Link href="/subscribe" className="text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200">
                   {t("subscribe")}
                 </Link>

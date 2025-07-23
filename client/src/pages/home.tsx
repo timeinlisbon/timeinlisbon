@@ -42,12 +42,12 @@ export default function Home() {
       
       <main>
         {/* Hero Section */}
-        <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+        <section className="pt-16 pb-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             
             {/* Logo and Title - positioned close together */}
             <div className="mb-8 animate-fade-in flex flex-col items-center">
-              <Logo className="animate-fade-in mb-4" />
+              <Logo className="animate-fade-in mb-2" />
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold animate-slide-up leading-tight text-gray-900 text-center">
                 {t("hero-title")}
               </h1>
