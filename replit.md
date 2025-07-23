@@ -108,3 +108,11 @@ Two main entities:
 - PostgreSQL database (configured for Neon serverless)
 - Environment variable support for database connection
 - Static file serving capability
+
+### Vercel Deployment Configuration
+- **Build Command**: `npm run build` (builds frontend with Vite and backend with ESBuild)
+- **Output Directory**: `dist/public` (contains static frontend assets)
+- **Functions**: `dist/index.js` (Node.js 20.x serverless function for API and SSR)
+- **Routes Configuration**: Static files served from `dist/public`, all API routes and fallbacks handled by `dist/index.js`
+- **Environment Variables**: Requires `DATABASE_URL` for PostgreSQL connection
+- **Build Process**: Frontend assets compiled to `dist/public/`, backend compiled to `dist/index.js`

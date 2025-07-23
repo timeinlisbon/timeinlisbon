@@ -1,0 +1,46 @@
+[14:02:43.167] Running build in Washington, D.C., USA (East) – iad1
+[14:02:43.167] Build machine configuration: 2 cores, 8 GB
+[14:02:43.188] Cloning github.com/timeinlisbon/timeinlisbon (Branch: main, Commit: 2f5ad53)
+[14:02:43.341] Previous build caches not available
+[14:02:43.467] Cloning completed: 278.000ms
+[14:02:45.130] Running "vercel build"
+[14:02:47.803] Vercel CLI 44.5.0
+[14:02:48.435] Installing dependencies...
+[14:02:53.243] npm warn deprecated @esbuild-kit/core-utils@3.3.2: Merged into tsx: https://tsx.is
+[14:02:53.244] npm warn deprecated @esbuild-kit/esm-loader@2.6.5: Merged into tsx: https://tsx.is
+[14:02:58.107] 
+[14:02:58.108] added 481 packages in 9s
+[14:02:58.109] 
+[14:02:58.109] 64 packages are looking for funding
+[14:02:58.110]   run `npm fund` for details
+[14:02:58.112] npm notice
+[14:02:58.112] npm notice New major version of npm available! 10.9.2 -> 11.4.2
+[14:02:58.112] npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.4.2
+[14:02:58.112] npm notice To update run: npm install -g npm@11.4.2
+[14:02:58.112] npm notice
+[14:02:58.159] Running "npm run build"
+[14:02:58.326] 
+[14:02:58.328] > rest-express@1.0.0 build
+[14:02:58.328] > vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist
+[14:02:58.329] 
+[14:02:58.592] [36mvite v5.4.19 [32mbuilding for production...[36m[39m
+[14:02:58.642] transforming...
+[14:02:58.893] Browserslist: browsers data (caniuse-lite) is 9 months old. Please run:
+[14:02:58.893]   npx update-browserslist-db@latest
+[14:02:58.893]   Why you should do it regularly: https://github.com/browserslist/update-db#readme
+[14:03:03.329] [32m✓[39m 1726 modules transformed.
+[14:03:03.657] rendering chunks...
+[14:03:03.666] computing gzip size...
+[14:03:03.687] [2m../dist/public/[22m[32mindex.html                                [39m[1m[2m  2.67 kB[22m[1m[22m[2m │ gzip:   1.00 kB[22m
+[14:03:03.687] [2m../dist/public/[22m[2massets/[22m[32mtimes-in-lisbon-logo-qBpXD1U3.png  [39m[1m[2m199.24 kB[22m[1m[22m
+[14:03:03.688] [2m../dist/public/[22m[2massets/[22m[35mindex-MFoDIhy4.css                 [39m[1m[2m 59.83 kB[22m[1m[22m[2m │ gzip:  10.63 kB[22m
+[14:03:03.688] [2m../dist/public/[22m[2massets/[22m[36mindex-C-cT_qoN.js                  [39m[1m[2m411.71 kB[22m[1m[22m[2m │ gzip: 128.93 kB[22m
+[14:03:03.688] [32m✓ built in 5.07s[39m
+[14:03:03.720] 
+[14:03:03.720]   dist/index.js  9.1kb
+[14:03:03.721] 
+[14:03:03.721] ⚡ Done in 4ms
+[14:03:03.738] Error: No Output Directory named "build" found after the Build completed. You can configure the Output Directory in your Project Settings.
+[14:03:03.740] Learn More: https://vercel.link/missing-public-directory
+[14:03:03.951] 
+[14:03:06.778] Exiting build container
