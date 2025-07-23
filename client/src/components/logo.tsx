@@ -6,7 +6,7 @@ interface LogoProps {
 
 export function Logo({ className = "" }: LogoProps) {
   return (
-    <div className={`logo-container ${className}`}>
+    <div className={`logo-container ${className}`} style={{ marginBottom: '-4.5rem' }}>
       <img 
         src={logoImage} 
         alt="Times in Lisbon Logo" 

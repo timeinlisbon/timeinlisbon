@@ -18,7 +18,7 @@ export function LanguageSelector() {
           variant="ghost"
           size="sm"
           onClick={() => setLanguage(value)}
-          className={`p-2 h-auto rounded-full hover:bg-gray-100 transition-all duration-200 ${
+          className={`p-3 h-auto min-w-[40px] min-h-[40px] rounded-full hover:bg-gray-100 transition-all duration-200 flex items-center justify-center ${
             language === value 
               ? 'ring-2 ring-gray-400 bg-gray-50' 
               : 'opacity-70 hover:opacity-100'
@@ -26,7 +26,7 @@ export function LanguageSelector() {
           title={label}
           aria-label={`Switch to ${label}`}
         >
-          <span className="text-lg">{flag}</span>
+          <span className="text-xl" style={{ fontSize: '20px' }}>{flag}</span>
         </Button>
       ))}
     </div>
