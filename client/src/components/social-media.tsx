@@ -20,7 +20,7 @@ const socialLinks = [
     name: "YouTube",
   },
   {
-    href: "mailto:hello@timesinlisbon.com",
+    href: "mailto:timesinlisbon@gmail.com",
     icon: Mail,
     label: "Send us an email",
     name: "Gmail",
