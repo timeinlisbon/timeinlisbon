@@ -114,7 +114,7 @@ export function SubscriptionForm() {
                 <FormLabel className="sr-only">{t("name-placeholder")}</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder={`${t("name-placeholder")} (${t("optional")})`}
+                    placeholder={t("name-placeholder")}
                     {...field}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200"
                   />
