@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { z } from "zod";
+import emailjs from "@emailjs/browser";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
@@ -23,6 +24,12 @@ export function SubscriptionForm() {
   const { toast } = useToast();
   const [isSuccess, setIsSuccess] = useState(false);
 
+  // Initialize EmailJS
+  useEffect(() => {
+    emailjs.init('CBrD_eLhX8oyJVS2l');
+    console.log('EmailJS initialized with new credentials');
+  }, []);
+
   const form = useForm<SubscriptionForm>({
     resolver: zodResolver(subscriptionSchema),
     defaultValues: {
@@ -33,11 +40,40 @@ export function SubscriptionForm() {
 
   const subscriptionMutation = useMutation({
     mutationFn: async (data: SubscriptionForm) => {
-      const response = await apiRequest("POST", "/api/subscribe", {
-        ...data,
-        language,
-      });
-      return response.json();
+      console.log('Starting subscription process for:', data.email);
+      
+      // Send notification email via EmailJS
+      try {
+        console.log('Sending email via EmailJS...');
+        const emailResult = await emailjs.send(
+          'service_laea0un',
+          'template_m1afili',
+          {
+            to_email: 'timesinlisbon@gmail.com',
+            subscriber_email: data.email,
+            subscriber_name: data.name || 'Não fornecido',
+            language: language === 'pt' ? 'Português' : 'English',
+            subscription_date: new Date().toLocaleDateString('pt-PT'),
+            message: `Nova subscrição: ${data.email} (${data.name || 'Sem nome'})`
+          }
+        );
+        console.log('Email sent successfully:', emailResult);
+      } catch (emailError) {
+        console.error('EmailJS error:', emailError);
+        throw new Error('Failed to send notification email. Please try again.');
+      }
+      
+      // Try to save to database, but don't fail if it doesn't work
+      try {
+        const response = await apiRequest("POST", "/api/subscribe", {
+          ...data,
+          language,
+        });
+        return response.json();
+      } catch (dbError) {
+        console.log('Database save failed, but email was sent successfully');
+        return { success: true };
+      }
     },
     onSuccess: () => {
       setIsSuccess(true);
