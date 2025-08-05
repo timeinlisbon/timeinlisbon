@@ -49,14 +49,11 @@ export default function Home() {
             <div className="mb-8 animate-fade-in flex flex-col items-center">
               <Logo className="animate-fade-in mb-2" />
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold animate-slide-up leading-tight text-gray-900 text-center">
-                {t("hero-title")}
+                Only locals know,<br />
+                now you do too...
               </h1>
             </div>
             
-            {/* Subheadline */}
-            <p className="text-lg sm:text-xl md:text-2xl text-gray-600 mb-12 animate-slide-up max-w-2xl mx-auto leading-relaxed">
-              {t("hero-subtitle")}
-            </p>
             
             {/* Social Media Cards */}
             <div ref={subscriptionRef} className="mb-12">

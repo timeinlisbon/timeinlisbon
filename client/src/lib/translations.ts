@@ -1,8 +1,7 @@
 export const translations = {
   en: {
     'subscribe': 'Subscribe',
-    'hero-title': 'Your Weekly Guide to Lisbon',
-    'hero-subtitle': 'Discover the best interviews, restaurant recommendations, and curated content from Portugal\'s vibrant capital.',
+    'hero-title': 'Only locals know,\nnow you do too...',
     'name-placeholder': 'Name (Optional)',
     'email-placeholder': 'Email Address *',
     'phone-placeholder': 'Phone Number (Optional)',
@@ -35,8 +34,7 @@ export const translations = {
   },
   pt: {
     'subscribe': 'Subscrever',
-    'hero-title': 'O Seu Guia Semanal de Lisboa',
-    'hero-subtitle': 'Descubra as melhores entrevistas, recomendações de restaurantes e conteúdo curado da vibrante capital de Portugal.',
+    'hero-title': 'Only locals know,\nnow you do too...',
     'name-placeholder': 'Nome (Opcional)',
     'email-placeholder': 'Endereço de Email *',
     'phone-placeholder': 'Número de Telefone (Opcional)',
@@ -69,8 +67,7 @@ export const translations = {
   },
   fr: {
     'subscribe': 'S\'abonner',
-    'hero-title': 'Votre Guide Hebdomadaire de Lisbonne',
-    'hero-subtitle': 'Découvrez les meilleures interviews, recommandations de restaurants et contenu curé de la capitale vibrante du Portugal.',
+    'hero-title': 'Only locals know,\nnow you do too...',
     'name-placeholder': 'Nom (Optionnel)',
     'email-placeholder': 'Adresse Email *',
     'phone-placeholder': 'Numéro de Téléphone (Optionnel)',
