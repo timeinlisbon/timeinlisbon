@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { z } from "zod";
+import emailjs from "@emailjs/browser";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -25,6 +26,12 @@ export function ContactForm() {
   const { toast } = useToast();
   const [isSuccess, setIsSuccess] = useState(false);
 
+  // Initialize EmailJS
+  useEffect(() => {
+    emailjs.init('CBrD_eLhX8oyJVS2l');
+    console.log('EmailJS initialized for contact form');
+  }, []);
+
   const form = useForm<ContactForm>({
     resolver: zodResolver(contactSchema),
     defaultValues: {
@@ -36,11 +43,63 @@ export function ContactForm() {
 
   const contactMutation = useMutation({
     mutationFn: async (data: ContactForm) => {
-      const response = await apiRequest("POST", "/api/contact", {
-        ...data,
-        language,
-      });
-      return response.json();
+      console.log('Starting contact form submission for:', data.email);
+      
+      // Send notification email to admin via EmailJS
+      try {
+        console.log('Sending notification email to admin...');
+        const adminEmailResult = await emailjs.send(
+          'service_laea0un',
+          'template_u5cdk3o', // Template existente para admin
+          {
+            to_email: 'timesinlisbon@gmail.com',
+            from_name: data.name,
+            from_email: data.email,
+            message: data.message,
+            language: language === 'pt' ? 'Português' : 'English',
+            contact_date: new Date().toLocaleDateString('pt-PT'),
+            subject: `Nova mensagem de contato de ${data.name}`
+          }
+        );
+        console.log('Admin notification sent successfully:', adminEmailResult);
+      } catch (emailError) {
+        console.error('EmailJS admin notification error:', emailError);
+        throw new Error('Failed to send your message. Please try again.');
+      }
+
+      // Send confirmation email to user
+      try {
+        console.log('Sending confirmation email to user...');
+        const userEmailResult = await emailjs.send(
+          'service_laea0un',
+          'template_contact_user', // Precisará criar este template
+          {
+            to_email: data.email,
+            to_name: data.name,
+            language: language === 'pt' ? 'Português' : 'English',
+            confirmation_message: language === 'pt' 
+              ? 'Recebemos a sua mensagem e a nossa equipa entrará em contacto consigo em breve.'
+              : 'We have received your message and our team will get back to you soon.'
+          }
+        );
+        console.log('User confirmation sent successfully:', userEmailResult);
+      } catch (emailError) {
+        console.error('EmailJS user confirmation error:', emailError);
+        // Don't throw error here - admin notification was successful
+        console.log('Admin was notified but user confirmation failed');
+      }
+      
+      // Try to save to database, but don't fail if it doesn't work
+      try {
+        const response = await apiRequest("POST", "/api/contact", {
+          ...data,
+          language,
+        });
+        return response.json();
+      } catch (dbError) {
+        console.log('Database save failed, but emails were sent successfully');
+        return { success: true };
+      }
     },
     onSuccess: () => {
       setIsSuccess(true);
@@ -53,7 +112,7 @@ export function ContactForm() {
       // Hide success message after 5 seconds
       setTimeout(() => setIsSuccess(false), 5000);
     },
-    onError: () => {
+    onError: (error: any) => {
       toast({
         title: t("contact-error"),
         variant: "destructive",
